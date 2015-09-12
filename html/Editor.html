@@ -1,0 +1,52 @@
+<template name="Editor">
+  {{> loginButtons}}
+
+  <a href="" id="newArticle">neuer Artikel</a>
+
+  <ul>
+    {{#each articles}}
+      <li>
+        <a href="edit/{{_id}}">Titel: {{title}}</a>
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="Edit">
+  <h1>Artikel Bearbeiten</h1>
+  <form class="awesome-form">
+    <div class="input-group">
+      <input type="text" required id="title" value="{{title}}">
+      <label>Titel</label>
+    </div>
+    
+    <br>
+
+    <div class="input-group">
+      <input type="text" id="description" value="{{description}}">
+      <label>Beschreibung</label>
+    </div>
+
+    <br>
+
+    <div class="input-group">
+      <input type="text" id="imgSource" value="{{imgSource}}">
+      <label>Bildquelle</label>
+    </div>
+  
+    <br>
+
+    <div class="input-group">
+      <input type="text" id="text" value="{{text}}">
+      <label>Text</label>
+    </div>
+
+    <br>
+
+    <a href="" class="save">Save</a>
+    <br>
+    <a href="" class="remove">Artikel Löschen</a>
+  </form>
+</template>
+
+

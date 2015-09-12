@@ -1,0 +1,64 @@
+@import bourbon/bourbon
+@import neat/neat
+
+@import variables
+
+body
+  font-family: $sans-serif, sans-serif
+  background: #eee
+  height: 100%
+  width: 100%
+  margin: 0
+  color: #2E2E3C
+  line-height: 24px
+  -webkit-font-smoothing: antialiased
+
+h1
+  text-align: center
+
+ul
+  padding: 0
+  list-style: none
+
+*
+  // box-sizing: border-box
+  -webkit-tap-highlight-color: transparent
+  text-rendering: optimizeLegibility
+
+// End defaults
+
+
+.roundButton
+  position: relative
+  height: 56px
+  width: 56px
+  flex: 0 0 56px
+  display: inline-block
+  padding: 0
+  margin: 4px
+  border: 0
+  border-radius: 100%
+  overflow: hidden
+  font-size: 34px
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5)
+  background-color: $acent-color
+
+  .icon
+    color: #FFF
+    line-height: 56px
+    pointer-events: none
+    position: relative
+    top: 56%
+    left: 72%
+    transform: translateX(-50%) translateY(-50%)
+ 
+.topLeft
+  position: fixed
+  top: 10px
+  left: 10px
+
+.whiteBg
+  background-color: #FFF
+
+.dpn
+  display: none

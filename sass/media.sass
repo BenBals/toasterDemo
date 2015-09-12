@@ -1,0 +1,32 @@
+@import bourbon/bourbon
+@import neat/neat
+
++media(max-width 600px, 12)
+  .cardLi
+    // display: inline-block
+    width: 99.9%
+
+
+  .cardUl
+    // display: inline-block
+    // transform: translate(-50%)
+    // left: 50%
+    // position: relative
+    +outer-container
+
++media(min-width 1000px, 12)
+  .cardLi
+    // display: inline-block
+    width: 33%
+
+
+  .cardUl
+    // display: inline-block
+    // transform: translate(-50%)
+    // left: 50%
+    // position: relative
+    +outer-container
+
+  .article
+    .text
+      width: 70%

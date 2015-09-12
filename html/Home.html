@@ -1,0 +1,10 @@
+<template name="Home">
+
+  <h1>Toaster</h1>
+  <ul class="cardUl">
+      {{#each existingArticles}}
+        {{> articleCard}}
+      {{/each}}
+  </ul>  
+
+</template>
