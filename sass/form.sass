@@ -1,8 +1,6 @@
 @import bourbon/bourbon
 @import mixins
-
-$form-color: #21a1e1
-$border: solid 2px $form-color
+@import variables
 
 .awesome-form
   input
@@ -21,21 +19,6 @@ $border: solid 2px $form-color
     &[type="text"]
       border: none
       border-bottom: $border
-
-  a
-    background: none
-    border: $border
-    color: $form-color
-    padding: 15px 40px
-    font-size: 18px
-    display: inline-block
-    +center
-    margin: 20px
-    &:active
-      color: white
-        background-color: $form-color
-
-
 
   .input-group
     display: inline-block

@@ -28,3 +28,7 @@ Router.route 'edit/:_id', ->
     }
   else
     this.redirect('editor')
+
+# mangage users route
+Router.route 'manageUsers', ->
+  this.render 'ManageUsers'

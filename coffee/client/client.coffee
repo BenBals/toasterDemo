@@ -3,8 +3,11 @@
 # making the articles avalible form the dev tools console
 window.Articles = Articles
 
-# getting the published articles
-Meteor.subscribe 'publishedArticles'
+# getting the articles (published for everyone and all for admins and editors)
+Meteor.subscribe 'articles'
+
+# getting the user data (of all users for admins and their own for others, see the server.coffee file)
+Meteor.subscribe 'userData'
 
 # only show the articles that actully have all the needed data
 Template.Home.helpers existingArticles: ->
@@ -23,7 +26,22 @@ Template.Article.helpers processToHtml: (raw) ->
 
 # telling the template whether a user is authorised
 Template.Editor.helpers isEditorOrAdmin: ->
-  Roles.userIsInRole Meteor.user(), ['adimn', 'editor']
+  Roles.userIsInRole Meteor.user(), ['admin', 'editor']
+
+Template.ManageUsers.helpers {
+  # telling the template if the user is an admin
+  currentUserIsAdmin: ->
+    Roles.userIsInRole Meteor.user(), ['admin']
+  # get all the users and pass them to the template
+  users: ->
+    Meteor.users.find()
+  # get an id form the template and tell it if the user is an editor
+  isEditor: (id) ->
+    Roles.userIsInRole id, ['editor']
+  # get an id form the template and tell it if the user is an admin
+  isAdmin: (id) ->
+    Roles.userIsInRole id, ['admin']
+}
 
 Template.Edit.events({
   # making the save happen when the button is clicked
@@ -77,6 +95,28 @@ Template.Article.events {
   'click .backButton': ->
     # go to the last page
     history.back()
+}
+
+Template.ManageUsers.events {
+  'click .save': ->
+    obj = {}
+    $('.userTr').each ->
+      # getting the id and the values of the checkboxes
+      id = $(this).data('id')
+      isAdmin = $(this).find('.isAdmin')[0].checked
+      isEditor = $(this).find('.isEditor')[0].checked
+      # if a user is an admin they are automaticlly an editor too
+      if isAdmin then isEditor = true
+
+      # generating the obj for processing on the server
+      obj[id] = {
+        admin: isAdmin
+        editor: isEditor
+      }
+
+    console.log "calling setRoles with "
+    console.log obj
+    Meteor.call("setRoles", obj)
 }
 
 Template.Article.onCreated ->

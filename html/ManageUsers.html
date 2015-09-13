@@ -1,0 +1,34 @@
+<template name="ManageUsers">
+  {{> loginButtons}}
+
+  <h1>Nutzer verwalten</h1>
+
+  {{#if currentUserIsAdmin}}
+    <table class="materialTable">
+      <thead>
+        <tr>
+          <th>email</th>
+          <th>editor</th>
+          <th>admin</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each users}}
+        <tr data-id="{{_id}}" class="userTr">
+          <td>{{emails.[0].address}}</td>
+          <td>
+            <input type="checkbox" checked="{{isEditor _id}}" class="isEditor">
+          </td>
+          <td>
+            <input type="checkbox" checked="{{isAdmin _id}}" class="isAdmin">
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <a href="" class="bigBorderButton save">Speichern</a>
+  {{else}}
+    <p>Du musst dich mit einem authorisierten Account anmelden</p>
+  {{/if}}
+</template>

@@ -23,6 +23,24 @@ Meteor.methods {
       return id
     else
       Meteor.call('notAuthorisedError')
+
+  # method for setting users roles
+  setRoles: (obj) ->
+    # check for admin permissions
+    if Roles.userIsInRole this.userId, ['admin']
+      # loop over the obj
+      for id, settings of obj
+        # parse settings into a role readable format
+        rs = []
+        if settings.admin then rs.push('admin')
+        if settings.editor then rs.push('editor')
+
+        # set the role
+        Roles.setUserRoles id, rs
+    else
+      # if the user is not authorised raise an error
+      Meteor.call('notAuthorisedError')
+
   # convinient error method
   notAuthorisedError : ->
     throw new Meteor.Error("not-authorized");

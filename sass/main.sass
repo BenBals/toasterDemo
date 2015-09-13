@@ -2,6 +2,7 @@
 @import neat/neat
 
 @import variables
+@import mixins
 
 body
   font-family: $sans-serif, sans-serif
@@ -27,6 +28,20 @@ ul
 
 // End defaults
 
+
+a.bigBorderButton
+  background: none
+  border: $border
+  color: $form-color
+  padding: 15px 40px
+  font-size: 18px
+  display: inline-block
+  +center
+  margin: 20px
+  text-decoration: none
+  &:active
+    color: white
+    background-color: $form-color
 
 .roundButton
   position: relative
