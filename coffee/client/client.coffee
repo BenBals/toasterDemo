@@ -21,6 +21,10 @@ Template.Article.helpers processToHtml: (raw) ->
     raw.split('\n').join('<br>').split('<script>').join('').split('</script>').join('')
   else raw
 
+# telling the template whether a user is authorised
+Template.Editor.helpers isEditorOrAdmin: ->
+  Roles.userIsInRole Meteor.user(), ['adimn', 'editor']
+
 Template.Edit.events({
   # making the save happen when the button is clicked
   'click .save': ->

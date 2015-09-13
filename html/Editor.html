@@ -1,18 +1,31 @@
 <template name="Editor">
   {{> loginButtons}}
 
-  <a href="" id="newArticle">neuer Artikel</a>
+  {{#if isEditorOrAdmin}}
 
-  <ul>
-    {{#each articles}}
-      <li>
-        <a href="edit/{{_id}}">Titel: {{title}}</a>
-      </li>
-    {{/each}}
-  </ul>
+    <a href="" id="newArticle">neuer Artikel</a>
+
+    <ul>
+      {{#each articles}}
+        <li>
+          <a href="edit/{{_id}}">Titel: {{title}}</a>
+        </li>
+      {{/each}}
+    </ul>
+
+  {{else}}
+    <p>Du musst dich mit einem authorisierten Account anmelden</p>
+  {{/if}}
 </template>
 
 <template name="Edit">
+
+  <a href="/editor" class="roundButton //backButton topLeft">
+    <div class="icon">
+      <i class="fa fa-list"></i>
+    </div>
+  </a>
+
   <h1>Artikel Bearbeiten</h1>
   <form class="awesome-form">
     <div class="input-group">
