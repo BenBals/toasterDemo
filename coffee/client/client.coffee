@@ -43,23 +43,40 @@ Template.ManageUsers.helpers {
     Roles.userIsInRole id, ['admin']
 }
 
+Template.Edit.helpers {
+  blub: (n) ->
+    date = new Date(n+3600)
+    toTwoDigits = (n) ->
+      if n < 10
+        '0' + String(n)
+      else String(n)
+    return date.getUTCFullYear() + "-" + toTwoDigits(date.getUTCMonth() + 1) + "-" + date.getUTCDate()
+}
+
 Template.Edit.events({
   # making the save happen when the button is clicked
   'click .save': ->
+    # check for date
+    if !$('#publishDate')[0].validity.valid
+      $('#publishDate').val parseUnixTimeToString(Date.parse(parseUnixTimeToString(Date.now())))
+
     # getting all the data from the dom and creating a obj for mongo
     obj = {
       $set: {
         title: $('#title').val(),
         description: $('#description').val(),
         imgSource: $('#imgSource').val(),
-        text: $('#text').val()
+        text: $('#text').val(),
+        publishDate: Date.parse($('#publishDate').val())
       }
     }
 
     # checking if all fields have content
     if obj.$set.title == "" or obj.$set.description == "" or obj.$set.imgSource == "" or obj.$set.text == ""
-      alert("Du musst alle Felder ausfüllen!")
+      alert "Du musst alle Felder ausfüllen!"
       return
+
+    console.log obj
 
     # if everything is right push the data to the db
     Meteor.call 'updateArticle', this._id, obj

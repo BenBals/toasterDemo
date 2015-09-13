@@ -4,10 +4,23 @@
 Meteor.publish 'articles', ->
   # all articles for admins or editors
   if Roles.userIsInRole this.userId, ['admin', 'editor']
-    Articles.find()
+    Articles.find {}, {
+      sort: {
+        publishDate: -1
+      }
+    }
   # public articles for normal users
   else
-    Articles.find()
+    Articles.find {
+      publishDate: {
+        $lt: Date.now()
+      }
+    },
+    {
+      sort: {
+        publishDate: -1
+      }
+    }
 
 # publish all userData to the admins and their own to all others
 Meteor.publish 'userData', ->

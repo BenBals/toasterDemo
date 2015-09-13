@@ -13,4 +13,13 @@ root.blankArticle = {
   title: ""
   imgSource: ""
   description: ""
+  publishDate: Date.now()
 }
+
+root.parseUnixTimeToString = (n) ->
+  date = new Date(n+3600)
+  toTwoDigits = (n) ->
+    if n < 10
+      '0' + String(n)
+    else String(n)
+  return date.getUTCFullYear() + "-" + toTwoDigits(date.getUTCMonth() + 1) + "-" + date.getUTCDate()

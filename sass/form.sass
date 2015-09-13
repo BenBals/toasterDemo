@@ -5,8 +5,8 @@
 .awesome-form
   input
     background: none
-    border: $border
-    color: $form-color
+    border: none
+    border-bottom: $border
     padding: 15px 40px
     font-size: 18px
     display: inline-block
@@ -15,10 +15,6 @@
     &:focus,
     &:active
       outline: none
-
-    &[type="text"]
-      border: none
-      border-bottom: $border
 
   .input-group
     display: inline-block
@@ -41,7 +37,8 @@
       pointer-events: none
 
     input:focus + label,
-    input:valid + label
+    input:valid + label,
+    input.has-value + label
       top: -10px
       font-size: 12px
       color: #aaa
