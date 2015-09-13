@@ -18,11 +18,19 @@ Template.Home.helpers existingArticles: ->
     imgSource: {$ne: ""}
   }
 
-# taking the raw data and inserting the needed brs and stuff
-Template.Article.helpers processToHtml: (raw) ->
+# process markdown n shit
+root.processToHtml = (raw) ->
   if raw
+    raw = marked.parse raw
     raw.split('\n').join('<br>').split('<script>').join('').split('</script>').join('')
   else raw
+
+# taking the raw data and inserting the needed brs and stuff
+Template.Article.helpers processToHtml: (raw) ->
+  processToHtml raw
+Template.ArticleCard.helpers processToHtml: (raw) ->
+  processToHtml raw
+
 
 # telling the template whether a user is authorised
 Template.Editor.helpers isEditorOrAdmin: ->

@@ -9,6 +9,8 @@
   <div class="whiteBg article">
     <img src="{{imgSource}}" class="bigPic">
     <h1>{{title}}</h1>
-    <p class="text">{{{processToHtml text}}}</p>
+    <div class="text markdown-inside">
+      {{{processToHtml text}}}
+    </div>
   </div>
 </template>

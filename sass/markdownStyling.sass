@@ -1,0 +1,54 @@
+@import variables
+
+.markdown-inside
+  blockquote
+    background: #f9f9f9
+    border-left: 10px solid #ccc
+    margin: 1.5em 10px
+    padding: 0.5em 10px
+    quotes: "“" "”" "‘" "’"
+    &:before
+      color: #ccc
+      content: open-quote
+      font-size: 4em
+      line-height: 0.1em
+      margin-right: 0.25em
+      vertical-align: -0.4em
+    p
+      display: inline
+
+  h1, h2, h3, h4, h5, h6
+    text-align: left
+
+  h1, h2
+    padding-bottom: 4px
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2)
+
+  h1
+    font-size: 2em
+
+  h2
+    font-size: 1.75em
+
+  h3
+    font-size: 1.4em
+
+  h4
+    font-size: 1.25em
+
+  h5, h6
+    font-size: 1.1em
+
+  h6
+    color: rgba(0, 0, 0, 0.5)
+
+
+  li ul
+    list-style-type: disc
+    padding-left: 20px
+
+  a
+    color: $acent-color
+
+  img
+    width: 100%

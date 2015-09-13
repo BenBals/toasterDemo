@@ -1,5 +1,6 @@
 # getting the root so we can make global variables from coffeescript
 root = exports ? this
+root.root = root
 
 # the collection that stores all the articles
 root.Articles = new (Mongo.Collection)('articles')

@@ -1,4 +1,4 @@
-<template name="articleCard">
+<template name="ArticleCard">
     <li class="cardLi">
         <div class="card">
             <div class="image">
@@ -6,7 +6,7 @@
                 <span class="title">{{title}}</span>
             </div>
             <div class="content">
-                <p>{{description}}</p>
+                <p>{{{processToHtml description}}}</p>
             </div>
             <div class="action">
                 <a href="/article/{{_id}}">Durchlesen</a>
