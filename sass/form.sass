@@ -2,16 +2,17 @@
 @import mixins
 
 $form-color: #21a1e1
+$border: solid 2px $form-color
 
 .awesome-form
   input
     background: none
-    border: solid 2px $form-color
+    border: $border
     color: $form-color
     padding: 15px 40px
     font-size: 18px
     display: inline-block
-    width: 200px
+    width: 100%
 
     &:focus,
     &:active
@@ -19,11 +20,11 @@ $form-color: #21a1e1
 
     &[type="text"]
       border: none
-      border-bottom: solid 2px $form-color
+      border-bottom: $border
 
   a
     background: none
-    border: solid 2px $form-color
+    border: $border
     color: $form-color
     padding: 15px 40px
     font-size: 18px
@@ -42,6 +43,7 @@ $form-color: #21a1e1
     position: relative
     +center
     margin: 20px 0px
+    width: 50%
 
     input
       padding: 15px 0px
@@ -61,3 +63,16 @@ $form-color: #21a1e1
       font-size: 12px
       color: #aaa
       +transition
+
+    textarea
+      width: 100%
+      border: none
+      // border-bottom: $border
+      font-size: 18px
+      padding: 20px
+
+      &:focus
+        outline: none
+
+  .input-group-textarea
+    width: 75%
