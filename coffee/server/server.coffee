@@ -4,7 +4,8 @@
 Meteor.publish 'articles', ->
   # all articles for admins or editors
   if Roles.userIsInRole this.userId, ['admin', 'editor']
-    Articles.find {}, {
+    Articles.find {},
+    {
       sort: {
         publishDate: -1
       }
