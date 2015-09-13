@@ -89,6 +89,18 @@ Template.Editor.events {
         alert err.message
       # go to the edit page for the new article
       Router.go('/edit/' + res)
+  # making the remove happen when the button is clicked
+  'click .remove': ->
+    # making a popup and asking the user if they really want this
+    if window.confirm 'Willst du den Artikel wirklich löschen?'
+      # if so tell the db to remove the article
+      Meteor.call 'removeArticle', $(event.target).data("id"), (err, res) ->
+        # check if the is a error and if there is notify the user
+        if err
+          console.log err.reason
+          alert err.message
+        # if everything was successful go to the edit overview
+        Router.go('editor')
 }
 
 Template.Article.events {

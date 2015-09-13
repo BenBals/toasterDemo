@@ -3,12 +3,28 @@
 
   {{#if isEditorOrAdmin}}
 
-    <a href="" id="newArticle">neuer Artikel</a>
+    <a href="" class="roundButton //backButton topRight topRight" id="newArticle">
+      <div class="icon">
+        <i class="fa fa-plus"></i>
+      </div>
+    </a>
+
+    <h1>Artikelübersicht</h1>
 
     <ul>
       {{#each articles}}
         <li>
-          <a href="edit/{{_id}}">Titel: {{title}}</a>
+          <div class="smallCard">
+            <div class="rightIcons">
+              <a href="edit/{{_id}}">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="" class="remove" data-id="{{_id}}">
+                <i class="fa fa-trash-o" data-id="{{_id}}"></i>
+              </a>
+            </div>
+            <a href="edit/{{_id}}">Titel: {{title}}</a>
+          </div>
         </li>
       {{/each}}
     </ul>
