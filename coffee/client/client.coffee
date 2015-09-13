@@ -17,7 +17,9 @@ Template.Home.helpers existingArticles: ->
 
 # taking the raw data and inserting the needed brs and stuff
 Template.Article.helpers processToHtml: (raw) ->
-  raw.split('\n').join('<br>').split('<script>').join('').split('</script>').join('')
+  if raw
+    raw.split('\n').join('<br>').split('<script>').join('').split('</script>').join('')
+  else raw
 
 Template.Edit.events({
   # making the save happen when the button is clicked
