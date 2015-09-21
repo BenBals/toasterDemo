@@ -150,10 +150,7 @@ Template.ManageUsers.events {
         admin: isAdmin
         editor: isEditor
       }
-
-    console.log "calling setRoles with "
-    console.log obj
-    Meteor.call("setRoles", obj)
+    Meteor.call "setRoles",obj
 }
 
 Template.Article.onCreated ->
