@@ -24,6 +24,9 @@ ul
   padding: 0
   list-style: none
 
+.transitioner > div:not(.velocity-animating)
+  position: initial !important
+
 *
   // box-sizing: border-box
   -webkit-tap-highlight-color: transparent
@@ -48,6 +51,7 @@ a.bigBorderButton
 
 .roundButton
   position: relative
+  z-index: 1
   height: 56px
   width: 56px
   flex: 0 0 56px

@@ -1,3 +1,7 @@
+# Configure the router
+Router.configure
+  layoutTemplate: 'layout',
+
 # the home or index or what ever you want to call it
 Router.route '/', ->
   this.render('Home')
