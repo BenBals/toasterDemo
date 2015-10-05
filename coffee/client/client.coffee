@@ -89,6 +89,9 @@ Template.Edit.events({
     # if everything is right push the data to the db
     Meteor.call 'updateArticle', this._id, obj
 
+    # removing the saved state from local storage
+    root.utils.removeFromLocalStorage 'text_' + this._id
+
   # making the remove happen when the button is clicked
   'click .remove': ->
     # making a popup and asking the user if they really want this
@@ -101,6 +104,28 @@ Template.Edit.events({
           alert err.message
         # if everything was successful go to the edit overview
         Router.go('editor')
+
+      # removing the saved state from local storage
+      root.utils.removeFromLocalStorage 'text_' + this._id
+
+  'keyup #text': (e) ->
+    newVal = $(e.target).val()
+    oldVal = this.text
+    if oldVal != newVal
+      root.utils.saveLocalStorage 'text_' + this._id, newVal
+    else
+      root.utils.removeFromLocalStorage 'text_' + this._id
+
+  'focus #text': ->
+  # asking to recover stuff if there is stuff to recover
+    if !Session.get 'notFirstTyping_' + this._id
+      Session.set 'notFirstTyping_' + this._id, true
+      savedText = root.utils.loadLocalStorage 'text_' + this._id
+      if savedText
+        if window.confirm 'Du hast ungespeicherte Vortschritte vom letzten Mal. Willst du sie laden.'
+          $('#text').val(savedText)
+
+
 })
 
 Template.Editor.events {
@@ -156,3 +181,15 @@ Template.ManageUsers.events {
 Template.Article.onCreated ->
   # scroll to the top on the new article
   $(document).scrollTop(0)
+
+
+# utils
+root.utils = {
+  # managing localStorage
+  loadLocalStorage: (id) ->
+    JSON.parse localStorage[id]
+  saveLocalStorage: (id, obj) ->
+    localStorage[id] = JSON.stringify obj
+  removeFromLocalStorage: (id) ->
+    localStorage.removeItem id
+}
