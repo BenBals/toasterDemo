@@ -29,3 +29,5 @@ ejson
 spacebars
 check
 ccorcos:transitioner
+sanjo:jasmine
+velocity:html-reporter
