@@ -1,0 +1,10 @@
+<template name="Search">
+	<input type="text" id="searchBox" value="{{query}}">
+
+	<ul class="cardUl">
+      {{#each matchingArticles.get}}
+        {{> ArticleCard}}
+      {{/each}}
+  </ul>
+
+</template>

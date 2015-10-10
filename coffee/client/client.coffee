@@ -15,14 +15,3 @@ root.processToHtml = (raw) ->
     raw = marked.parse raw
     raw.split('\n').join('<br>').split('<script>').join('').split('</script>').join('')
   else raw
-
-# utils
-root.utils = {
-  # managing localStorage
-  loadLocalStorage: (id) ->
-    JSON.parse localStorage[id]
-  saveLocalStorage: (id, obj) ->
-    localStorage[id] = JSON.stringify obj
-  removeFromLocalStorage: (id) ->
-    localStorage.removeItem id
-}

@@ -24,13 +24,6 @@ Meteor.methods {
     else
       Meteor.call('notAuthorisedError')
 
-  # the search method, which takes a string and returns a collection
-  search: (query) ->
-    console.log 'you searched for ', query
-    console.log Articles.find {
-      title: {$regex: query}
-    }
-
   # method for setting users roles
   setRoles: (obj) ->
     # check for admin permissions

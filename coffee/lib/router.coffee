@@ -36,3 +36,7 @@ Router.route 'edit/:_id', ->
 # mangage users route
 Router.route 'manageUsers', ->
   this.render 'ManageUsers'
+
+# route the search page
+Router.route 'search', ->
+  this.render 'Search'
