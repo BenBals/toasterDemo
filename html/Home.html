@@ -1,12 +1,14 @@
 <template name="Home">
-  <h1>Toaster</h1>
+
+  <div class="title">
+    <h1>Toaster</h1>
+    <input type="text" id="searchBox" value="{{query}}" placeholder="Suchen" class="dpn">
+  </div>
 	
-  <div class="searchButton">
-    <i class="fa fa-search"></i>
-  </div>  
+  <i class="fa fa-search searchButton"></i>
 
   <ul class="cardUl">
-      {{#each existingArticles}}
+      {{#each matchingArticles}}
         {{> ArticleCard}}
       {{/each}}
   </ul>

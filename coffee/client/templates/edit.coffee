@@ -31,8 +31,6 @@ Template.Edit.events {
       alert "Du musst alle Felder ausfüllen!"
       return
 
-    console.log obj
-
     # if everything is right push the data to the db
     Meteor.call 'updateArticle', this._id, obj
 

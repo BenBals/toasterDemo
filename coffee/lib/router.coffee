@@ -4,7 +4,15 @@ Router.configure
 
 # the home or index or what ever you want to call it
 Router.route '/', ->
-  this.render('Home')
+  this.render 'Home', {
+    data: ->
+      return {
+        matchingArticles: ->
+          root.utils.search Session.get('searchQuery')
+        query: ->
+          Session.get('searchQuery')
+      }
+  }
 
 # go to the article with the given id
 Router.route '/article/:_id', ->
@@ -36,15 +44,3 @@ Router.route 'edit/:_id', ->
 # mangage users route
 Router.route 'manageUsers', ->
   this.render 'ManageUsers'
-
-# route the search page
-Router.route 'search', ->
-  this.render 'Search', {
-    data: ->
-      return {
-        matchingArticles: ->
-          root.utils.search Session.get('searchQuery')
-        query: ->
-          Session.get('searchQuery')
-      }
-  }

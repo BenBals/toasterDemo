@@ -13,6 +13,5 @@ Meteor.subscribe 'userData'
 root.processToHtml = (raw) ->
   if raw
     raw = marked.parse raw
-    console.log raw
     raw.split('<script>').join('').split('</script>').join('')
   else raw

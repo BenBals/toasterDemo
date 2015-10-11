@@ -30,7 +30,6 @@ root.utils = {
   # generating 'or lists' for the search
   generateSearchFindObj: (str) ->
     filteredList = _.filter str.split(' '), (el) -> el != ""
-    console.log filteredList
     orList = _.map filteredList, (n) ->
       {
         title: root.utils.generateSearchRegex n

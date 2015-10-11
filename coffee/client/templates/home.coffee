@@ -9,4 +9,16 @@ Template.Home.helpers existingArticles: ->
 
 Template.Home.events
   'click .searchButton': ->
-    Router.go 'search'
+    $('input#searchBox').toggle()
+
+  'keyup #searchBox': (e) ->
+
+    # get the query string
+    query = $(e.target).val()
+
+    # update the query on the session
+    Session.set('searchQuery', query)
+
+  'click .backButton': ->
+    # go to the last page
+    history.back()
