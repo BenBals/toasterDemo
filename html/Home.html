@@ -1,5 +1,10 @@
 <template name="Home">
   <h1>Toaster</h1>
+	
+  <div class="searchButton">
+    <i class="fa fa-search"></i>
+  </div>  
+
   <ul class="cardUl">
       {{#each existingArticles}}
         {{> ArticleCard}}

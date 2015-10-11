@@ -1,17 +1,17 @@
-Template.Search.helpers {
-  # all articles that match the current query
-  matchingArticles: Session.get('currentSearch')
-}
-
-Template.Search.onRendered ->
-  Session.set('currentSearch', Articles.find({}))
-
 Template.Search.events {
-  'keydown #searchBox': (e) ->
+  'keyup #searchBox': (e) ->
 
     # get the query string
     query = $(e.target).val()
-    
-    # return all articles that match the query
-    console.log Template.instance()
+
+    # update the query on the session
+    Session.set('searchQuery', query)
+
+  'click .backButton': ->
+    # go to the last page
+    history.back()
 }
+
+Template.Search.onRendered ->
+  $('#searchBox').focus()
+  $(document).scrollTop(0)

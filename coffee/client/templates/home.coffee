@@ -6,3 +6,7 @@ Template.Home.helpers existingArticles: ->
     text: {$ne: ""}
     imgSource: {$ne: ""}
   }
+
+Template.Home.events
+  'click .searchButton': ->
+    Router.go 'search'

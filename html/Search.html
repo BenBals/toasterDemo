@@ -1,8 +1,15 @@
 <template name="Search">
-	<input type="text" id="searchBox" value="{{query}}">
+
+	<a href="/" class="roundButton //backButton topLeft">
+	  <div class="icon">
+	    <i class="fa fa-chevron-left"></i>
+	  </div>
+	</a>
+
+	<input type="text" id="searchBox" value="{{query}}" placeholder="Suchen">
 
 	<ul class="cardUl">
-      {{#each matchingArticles.get}}
+      {{#each matchingArticles}}
         {{> ArticleCard}}
       {{/each}}
   </ul>

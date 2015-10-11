@@ -15,7 +15,11 @@ Meteor.publish 'articles', ->
     Articles.find {
       publishDate: {
         $lt: Date.now()
-      }
+      },
+      title: {$ne: ""}
+      description: {$ne: ""}
+      text: {$ne: ""}
+      imgSource: {$ne: ""}
     },
     {
       sort: {

@@ -39,4 +39,12 @@ Router.route 'manageUsers', ->
 
 # route the search page
 Router.route 'search', ->
-  this.render 'Search'
+  this.render 'Search', {
+    data: ->
+      return {
+        matchingArticles: ->
+          root.utils.search Session.get('searchQuery')
+        query: ->
+          Session.get('searchQuery')
+      }
+  }

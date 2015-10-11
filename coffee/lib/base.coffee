@@ -29,14 +29,19 @@ root.parseUnixTimeToString = (n) ->
 root.utils = {
   # generating 'or lists' for the search
   generateSearchFindObj: (str) ->
-    orList = _.map str.split(' '), (n) ->
+    filteredList = _.filter str.split(' '), (el) -> el != ""
+    console.log filteredList
+    orList = _.map filteredList, (n) ->
       {
         title: root.utils.generateSearchRegex n
       }
 
-    return {
-      $or: orList
-    }
+    if _.isEmpty orList
+      return {}
+    else 
+      return {
+        $or: orList
+      }
   # generate the search regex
   generateSearchRegex: (str) ->
     new RegExp str, 'i'

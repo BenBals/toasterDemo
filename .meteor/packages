@@ -32,3 +32,4 @@ ccorcos:transitioner
 sanjo:jasmine
 velocity:html-reporter
 reactive-var
+reactive-dict
