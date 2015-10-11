@@ -1,8 +1,8 @@
 # taking the raw data and inserting the needed brs and stuff
 Template.Article.helpers processToHtml: (raw) ->
-  processToHtml raw
+  root.processToHtml raw
 Template.ArticleCard.helpers processToHtml: (raw) ->
-  processToHtml raw
+  root.processToHtml raw
 
 Template.Article.events {
   'click .backButton': ->
